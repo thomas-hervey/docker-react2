@@ -20,5 +20,9 @@ RUN npm run build
 # ******************
 FROM nginx
 
+# needed for AWS elasticbeanstalk for port mapping
+EXPOSE 80
+
 # copy built code into nginx folder
 COPY --from=builder /app/build /usr/share/nginx/html
+
