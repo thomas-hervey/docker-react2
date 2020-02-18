@@ -12,3 +12,15 @@ script:
   - docker run -e CI=true tomtom92/docker-react2 npm run test -- --coverage
 
 # tell travis how to deploy to AWS
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-1"
+  name: "docker-react2"
+  env: "DockerReact2-env"
+  bucket_name: "elasticbeanstalk-us-west-1-621577575416"
+  bucket_path: "docker-react2"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
