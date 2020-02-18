@@ -9,6 +9,6 @@ before_install:
 
 # tell travis how to run our test suite
 script:
-  - docker run tomtom92/docker-react2 npm run test -- --coverage
+  - docker run -e CI=true tomtom92/docker-react2 npm run test -- --coverage
 
 # tell travis how to deploy to AWS
