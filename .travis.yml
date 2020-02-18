@@ -1,0 +1,14 @@
+# tell travis we need a copy of docker running
+sudo: required
+services:
+  - docker
+
+# build our image using Dockerfile.dev
+before_install:
+  - docker build -t tomtom92/docker-react2 -f Dockerfile.dev .
+
+# tell travis how to run our test suite
+script:
+  - docker run tomtom92/docker-react2 npm run test -- --coverage
+
+# tell travis how to deploy to AWS
